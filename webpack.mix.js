@@ -21,10 +21,11 @@ mix
             tailwindcss('./tailwind.js')
         ]
     })
-    .sourceMaps();
+    .sourceMaps()
+    .browserSync('https://steam-sheet.app');
 
 if (mix.inProduction()) {
-    mix.version();
+    mix.version()
 
     mix.extract([
         'vue',
@@ -39,7 +40,7 @@ mix.webpackConfig({
     ],
     resolve: {
         alias: {
-            '~': path.join(__dirname, './resources/assets/js');
+            '~': path.join(__dirname, './resources/assets/js')
         }
     }
 })

@@ -1,0 +1,11 @@
+.btn {
+    @apply .py-1 .px-2 .rounded .inline-block .no-underline;
+}
+
+.btn-grey {
+    @apply .bg-black .text-grey;
+}
+
+.btn-grey:hover {
+    @apply .bg-orange-dark .text-black;
+}

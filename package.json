@@ -10,17 +10,25 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@fortawesome/vue-fontawesome": "^0.0.22",
         "axios": "^0.17",
         "bootstrap-sass": "^3.3.7",
+        "browser-sync": "^2.23.3",
+        "browser-sync-webpack-plugin": "^1.2.0",
         "cross-env": "^5.1",
+        "eslint": "^3.19.0",
+        "eslint-plugin-vue": "^4.0.0",
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
-        "vue": "^2.5.7",
+        "tailwindcss": "^0.4.0",
+        "vue": "^2.5.7"
+    },
+    "dependencies": {
         "@fortawesome/fontawesome": "^1.1.0",
-        "@fortawesome/vue-fontawesome": "^0.0.22",
-        "eslint": "^3.19.0",
-        "eslint-plugin-vue": "^4.0.0",
-        "tailwindcss": "^0.4.0"
+        "@fortawesome/fontawesome-free-brands": "^5.0.2",
+        "@fortawesome/fontawesome-pro-light": "^5.0.2",
+        "@fortawesome/fontawesome-pro-regular": "^5.0.2",
+        "@fortawesome/fontawesome-pro-solid": "^5.0.2"
     }
 }
