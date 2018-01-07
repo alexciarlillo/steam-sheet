@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login/steam', 'Auth\LoginController@redirectToProvider');
+Route::get('login/steam/callback', 'Auth\LoginController@handleProviderCallback');
