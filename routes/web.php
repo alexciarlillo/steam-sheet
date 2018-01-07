@@ -16,7 +16,16 @@ Route::get('/', function () {
 });
 
 Route::get('login', 'Auth\LoginController@login');
+Route::get('logout', function () {
+    Auth::logout();
+
+    return redirect('/');
+});
 
 Route::get('/home', function () {
-    return view('home', ['user' => \Auth::user()]);
+    if (Auth::check()) {
+        return view('home', ['user' => \Auth::user()]);
+    } else {
+        return redirect('/login');
+    }
 });
