@@ -21,17 +21,17 @@ mix
             tailwindcss('./tailwind.js')
         ]
     })
-    .sourceMaps()
+    .sourceMaps();
 
 if (mix.inProduction()) {
-    mix.version()
+    mix.version();
 
     mix.extract([
         'vue',
         'axios',
         '@fortawesome/fontawesome',
         '@fortawesome/vue-fontawesome'
-    ])
+    ]);
 }
 
 mix.webpackConfig({
@@ -39,7 +39,7 @@ mix.webpackConfig({
     ],
     resolve: {
         alias: {
-            '~': path.join(__dirname, './resources/assets/js')
+            '~': path.join(__dirname, './resources/assets/js');
         }
     }
 })
