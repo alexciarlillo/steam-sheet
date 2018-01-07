@@ -2,31 +2,22 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use App\AuthenticateUser;
+use App\AuthenticateUserListener;
 use App\Http\Controllers\Controller;
 
-use Socialite;
-
-class LoginController extends Controller
+class LoginController extends Controller implements AuthenticateUserListener
 {
-    /**
-     * Redirect the user to the Steam authentication page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function redirectToProvider()
+    public function login(AuthenticateUser $authenticator, Request $request)
     {
-        return Socialite::driver('steam')->redirect();
+        $hasId = $request->has('openid_identity');
+
+        return $authenticator->execute($hasId, $this);
     }
 
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function handleProviderCallback()
+    public function userHasLoggedIn($user)
     {
-        $user = Socialite::driver('steam')->user();
-
-        $user->token;
+        return redirect('/home');
     }
 }
