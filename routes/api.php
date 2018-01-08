@@ -14,7 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return auth()->user();
 });
 
 Route::middleware('auth:api')->get('/friends', 'FriendsController@getFriends');
+Route::middleware('auth:api')->get('/games', 'GamesController@getGames');

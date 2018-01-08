@@ -19,10 +19,21 @@
             axios.get('/api/user')
                 .then(response => {
                     this.user = response.data;
+
+                    axios.get('/api/games/?steamid=' + this.user.steam_id)
+                        .then(response => {
+                            this.user.games = response.data;
+                            console.log(this.user.games);
+                        })
+                        .catch(e => {
+                            console.log(e);
+                        });
                 })
                 .catch(e => {
                     console.log(e);
                 });
+
+            
         }
     }
 </script>
