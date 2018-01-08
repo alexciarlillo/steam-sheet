@@ -9,7 +9,8 @@
 
     export default {
         data: () => ({
-            user: null
+            user: null,
+            selectedFriends: []
         }),
 
         components: {FriendsList},

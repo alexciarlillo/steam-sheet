@@ -3,7 +3,10 @@
         <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
             <FriendListFilter @update:filter="updateFilter"></FriendListFilter>
             <ul class="list-reset">
-                <Friend v-for="friend in filteredAndSortedFriends" :key="friend.steamid" :friend="friend"></Friend>
+                <Friend v-for="friend in filteredAndSortedFriends" 
+                    :key="friend.steamid" 
+                    :friend="friend">
+                </Friend>
             </ul>
         </div>
     </div>
@@ -60,7 +63,8 @@
 
             updateFilter: function(event) {
                 this.filter = event;
-            }
+            },
+
         },
 
         computed: {
@@ -72,7 +76,10 @@
         created() {
             axios.get('/api/friends')
                 .then(response => {
-                    this.friends = response.data;
+                    this.friends = response.data.map(function(friend) {
+                        friend.selected = false;
+                        return friend;
+                    })
                 })
                 .catch(e => {
                     console.log(e);
