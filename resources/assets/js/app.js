@@ -20,8 +20,10 @@ const brands = require('@fortawesome/fontawesome-free-brands');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+import App from './components/App.vue';
 
 const app = new Vue({
-    el: '#app'
+    el: '#app', 
+    template: '<App/>',
+    components: { App }
 });
