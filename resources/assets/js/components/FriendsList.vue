@@ -1,5 +1,5 @@
 <template>
-    <div v-if="user.friends" class="w-full">
+    <div v-if="friends" class="w-full">
         <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
             <FriendListFilter @update:filter="updateFilter"></FriendListFilter>
             <ul class="list-reset">
@@ -34,14 +34,16 @@
         },
 
         computed: {
-            ...mapState(['user']),
             filteredFriends () {
                 return this.$store.getters.filteredFriends(this.filter);
+            },
+            friends () {
+                return this.$store.state.friends.all;
             }
         },
         
         created() {
-            this.$store.dispatch('getUserFriends');
+            this.$store.dispatch('getFriends');
         }
     }
 </script>
