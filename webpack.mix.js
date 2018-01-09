@@ -22,7 +22,7 @@ mix
         ]
     })
     .sourceMaps()
-    .browserSync('https://steam-sheet.app');
+    .disableNotifications();
 
 if (mix.inProduction()) {
     mix.version()
@@ -36,6 +36,9 @@ if (mix.inProduction()) {
 }
 
 mix.webpackConfig({
+    devServer: {
+        contentBase: path.resolve(__dirname, 'public'),
+    },
     plugins: [
     ],
     resolve: {

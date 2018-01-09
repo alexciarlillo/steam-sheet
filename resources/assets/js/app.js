@@ -9,10 +9,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-const fontawesome = require('@fortawesome/fontawesome');
-const regular = require('@fortawesome/fontawesome-pro-regular');
-const brands = require('@fortawesome/fontawesome-free-brands');
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -6,21 +6,24 @@
         </div>
         <div class="selector">
             <button :class="selectedColor" v-on:click="toggleSelected">
-                <i class="far fa-plus-octagon text-2xl" v-show="!friend.selected"></i>
-                <i class="far fa-minus-octagon text-2xl" v-show="friend.selected"></i>
+                <font-awesome-icon :icon="plusIcon" v-show="!friend.selected" size="lg"></font-awesome-icon>
+                <font-awesome-icon :icon="minusIcon" v-show="friend.selected" size="lg"></font-awesome-icon>
             </button>
         </div>
     </li>
 </template>
 
 <script>
+    import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+    import { faPlusOctagon, faMinusOctagon } from '@fortawesome/fontawesome-pro-regular'
+
     export default {
         name: 'Friend',
 
         props: ['friend'],
 
         computed: {
-            personaStateColor: function() {
+            personaStateColor () {
                 switch(this.friend.personastate) {
                     case 0:
                         return 'text-gray';
@@ -37,7 +40,7 @@
                 }
             },
 
-            selectedColor: function() {
+            selectedColor () {
                 if(!this.friend.selected) {
                     return 'text-green-dark hover:text-black';
                 } else {
@@ -45,8 +48,16 @@
                 }
             },
 
-            isSelected: function() {
+            isSelected () {
                 return this.friend.selected;
+            },
+
+            plusIcon () {
+                return faPlusOctagon;
+            },
+
+            minusIcon () {
+                return faMinusOctagon;
             }
         },
 
@@ -58,6 +69,10 @@
                     this.friend.selected = false;
                 }
             }
+        },
+
+        components: {
+            FontAwesomeIcon
         }
     }
 </script>
