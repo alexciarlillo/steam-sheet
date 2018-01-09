@@ -23,6 +23,9 @@ Vue.use(Vuex);
     mutations: {
         setUserGames(state, payload) {
             state.user = { ...state.user, games: payload.games };
+        },
+        setUserFriends(state, payload) {
+            state.user = { ...state.user, friends: payload.friends };
         }
     },
     actions: {
@@ -34,6 +37,52 @@ Vue.use(Vuex);
                 .catch(e => {
                     console.log(e);
                 });
+        },
+        getUserFriends ({ commit }) {
+            axios.get('/api/friends')
+                .then(response => {                    
+                    let friends = response.data.map(function (friend) {
+                        friend.selected = false;
+                        return friend;
+                    });
+
+                    commit('setUserFriends', { friends: friends });
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        }
+    },
+    getters: {
+        sortedFriends: (state) => {
+            return state.user.friends.sort(function (a, b) {
+                // 0 == Offline
+                // 1 == Online
+                // 2 == Busy
+                // 3 == Away
+                // 4 == Snooze
+                // 5 == LTT
+                // 6 == LTP
+
+                if (a.personastate === b.personastate) {
+                    return a.personaname.localeCompare(b.personaname);
+                }
+
+                if (a.personastate === 0) {
+                    return 1;
+                }
+
+                if (b.personastate === 0) {
+                    return -1;
+                }
+
+                return a.personastate - b.personastate;
+            });
+        },
+        filteredFriends: (state, getters) => (filter) => {
+            return getters.sortedFriends.filter(function (friend) {
+                return friend.personaname.toLowerCase().includes(filter.toLowerCase());
+            });
         }
     }
 })

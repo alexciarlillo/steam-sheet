@@ -3,7 +3,7 @@
         <Header :app="app" :user="user"></Header>
 
         <div class="flex p-4">
-            <FriendsList :user="user"></FriendsList>
+            <FriendsList></FriendsList>
             <ul>
                 <li v-for="game in user.games">{{ game.name }}</li>
             </ul>
@@ -13,7 +13,6 @@
 
 <script>
     import { mapState } from 'vuex';
-    import { mapMutations } from 'vuex';
 
     import Header from './Header.vue';
     import FriendsList from './FriendsList.vue';
@@ -26,10 +25,6 @@
         computed: mapState(['user', 'app']),
 
         components: { FriendsList, Header },
-
-        methods: {
-
-        },
 
         created() {
             this.$store.dispatch('getGamesFromSteamId', {steamid: this.user.steam_id});
