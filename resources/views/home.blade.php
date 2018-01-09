@@ -9,6 +9,10 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+
+        <script type="text/javascript">
+            window.__INITIAL_STATE__ = "{!! addslashes(json_encode($state)) !!}";
+        </script>
     </head>
     <body class="bg-black font-sans">
         

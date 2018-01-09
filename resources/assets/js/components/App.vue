@@ -1,6 +1,6 @@
 <template>
     <div v-if="user">
-        <Header :user="user"></Header>
+        <Header :app="app" :user="user"></Header>
 
         <div class="flex p-4">
             <FriendsList :user="user"></FriendsList>
@@ -12,9 +12,12 @@
     import Header from './Header.vue';
     import FriendsList from './FriendsList.vue';
 
+    let state = JSON.parse(window.__INITIAL_STATE__) || {};
+
     export default {
         data: () => ({
-            user: null,
+            user: state.user,
+            app: state.app,
             selectedFriends: []
         }),
 
