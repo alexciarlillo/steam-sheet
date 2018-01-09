@@ -7,8 +7,10 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+import Vuex from 'vuex';
 
+Vue.use(Vuex);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,10 +18,32 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ const store = new Vuex.Store({
+    state: JSON.parse(window.__INITIAL_STATE__) || {},
+    mutations: {
+        setUserGames(state, payload) {
+            state.user = { ...state.user, games: payload.games };
+        }
+    },
+    actions: {
+        getGamesFromSteamId ({ commit }, payload) {
+            axios.get('/api/games/?steamid=' + payload.steamid)
+                .then(response => {
+                    commit('setUserGames', { games: response.data });
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        }
+    }
+})
+
+
 import App from './components/App.vue';
 
 const app = new Vue({
     el: '#app', 
+    store,
     template: '<App/>',
     components: { App }
 });

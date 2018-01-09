@@ -29,9 +29,14 @@ if (mix.inProduction()) {
 
     mix.extract([
         'vue',
+        'vuex',
         'axios',
         '@fortawesome/fontawesome',
-        '@fortawesome/vue-fontawesome'
+        '@fortawesome/vue-fontawesome',
+        "@fortawesome/fontawesome-free-brands",
+        "@fortawesome/fontawesome-pro-light",
+        "@fortawesome/fontawesome-pro-regular",
+        "@fortawesome/fontawesome-pro-solid"
     ]);
 }
 

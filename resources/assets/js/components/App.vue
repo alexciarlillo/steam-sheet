@@ -4,43 +4,35 @@
 
         <div class="flex p-4">
             <FriendsList :user="user"></FriendsList>
-        </div>
+            <ul>
+                <li v-for="game in user.games">{{ game.name }}</li>
+            </ul>
+        </div>       
     </div>
 </template>
 
 <script>
+    import { mapState } from 'vuex';
+    import { mapMutations } from 'vuex';
+
     import Header from './Header.vue';
     import FriendsList from './FriendsList.vue';
 
-    let state = JSON.parse(window.__INITIAL_STATE__) || {};
-
     export default {
         data: () => ({
-            user: state.user,
-            app: state.app,
             selectedFriends: []
         }),
 
-        components: {FriendsList, Header},
+        computed: mapState(['user', 'app']),
+
+        components: { FriendsList, Header },
+
+        methods: {
+
+        },
 
         created() {
-            axios.get('/api/user')
-                .then(response => {
-                    this.user = response.data;
-
-                    axios.get('/api/games/?steamid=' + this.user.steam_id)
-                        .then(response => {
-                            this.user.games = response.data;
-                        })
-                        .catch(e => {
-                            console.log(e);
-                        });
-                })
-                .catch(e => {
-                    console.log(e);
-                });
-
-            
+            this.$store.dispatch('getGamesFromSteamId', {steamid: this.user.steam_id});
         }
     }
 </script>
