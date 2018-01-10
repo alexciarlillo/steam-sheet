@@ -1,6 +1,6 @@
 <template>
     <div class="w-3/5 px-2">
-        <div class="rounded overflow-hidden shadow-lg bg-white h-64">
+        <div class="rounded overflow-hidden shadow-lg bg-white p-2">
             <GamesTable></GamesTable>
         </div>
     </div>

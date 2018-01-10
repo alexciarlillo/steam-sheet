@@ -7,7 +7,7 @@ export const setSteamGamesForUser = (state, payload) => {
             return friend.steamid == payload.steamid;
         });
 
-        if(userIndex)  {
+        if(userIndex >= 0)  {
             let user = state.friends.all.splice(userIndex, 1)[0];
 
             console.log(user);

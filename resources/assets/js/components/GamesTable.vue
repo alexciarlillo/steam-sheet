@@ -1,15 +1,18 @@
 <template>
     <div class="w-full">
+
         <!-- <table-component :data="">
             <div v-for="friend in selectedFriends">
                 <table-column show="communityvisibilitystate" :label="friend.personaname"></table-column>
             </div>
         </table-component> -->
+        <h1>Total Unique Games: {{uniqueGames.length}}</h1>
         <ul>
-            <li v-for="game in combinedGames" :key="game.appid">
+            <li v-for="game in uniqueGames" :key="game.appid">
                 {{game.name}}
             </li>
         </ul>
+        
     </div>
 </template>
 
@@ -21,14 +24,16 @@
     export default {
         name: 'GamesTable',
 
-        props: [],
-
         computed: {
-            combinedGames () {
+            uniqueGames () {
+                let friendsGames = this.selectedFriends.map(function (friend) {
+                    return friend.games;
+                });
                 
+                return _.intersectionBy(...friendsGames, this.selectedGames, 'appid');
             },
             ...mapState(['user', 'friends']),
-            ...mapGetters(['selectedFriends'])
+            ...mapGetters(['selectedFriends', 'selectedGames'])
         },
 
         components: {

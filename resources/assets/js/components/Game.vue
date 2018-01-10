@@ -13,6 +13,7 @@
 </template>
 
 <script>
+    import { mapMutations } from 'vuex';
     import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
     import { faPlusOctagon, faMinusOctagon } from '@fortawesome/fontawesome-pro-regular'
 
@@ -40,16 +41,13 @@
                 } else {
                     return 'text-red-dark hover:text-black';
                 }
-            },
+            }
         },
 
         methods: {
+            ...mapMutations(['toggleGame']),
             toggleSelected: function() {
-                if(!this.game.selected) {
-                    this.game.selected = true;
-                } else {
-                    this.game.selected = false;
-                }
+                this.toggleGame({ game: this.game });
             }
         },
 
