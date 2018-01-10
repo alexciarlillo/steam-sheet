@@ -1,13 +1,13 @@
 <template>
-    <li class="friend flex h-10 items-center">
+    <li class="friend flex h-10 items-center p-2">
         <div class="info flex-grow">
             <span class="nickname" :class="personaStateColor">{{ friend.personaname }}</span>
             <span class="realname text-sm text-grey">{{ friend.realname }}</span>
         </div>
         <div class="selector">
             <button :class="selectedColor" v-on:click="toggleSelected">
-                <font-awesome-icon :icon="plusIcon" v-show="!friend.selected" size="lg"></font-awesome-icon>
-                <font-awesome-icon :icon="minusIcon" v-show="friend.selected" size="lg"></font-awesome-icon>
+                <font-awesome-icon :icon="plusIcon" v-show="!isSelected" size="lg"></font-awesome-icon>
+                <font-awesome-icon :icon="minusIcon" v-show="isSelected" size="lg"></font-awesome-icon>
             </button>
         </div>
     </li>

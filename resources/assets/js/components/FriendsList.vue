@@ -1,7 +1,7 @@
 <template>
-    <div v-if="friends" class="w-full">
-        <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
-            <FriendListFilter @update:filter="updateFilter"></FriendListFilter>
+    <div v-if="friends" class="w-1/5">
+        <div class="rounded overflow-hidden shadow-lg bg-white">
+            <ListFilterInput @update:filter="updateFilter"></ListFilterInput>
             <ul class="list-reset">
                 <Friend v-for="friend in filteredFriends" 
                     :key="friend.steamid" 
@@ -16,12 +16,12 @@
     import { mapState } from 'vuex';
 
     import Friend from './Friend.vue';
-    import FriendListFilter from './FriendListFilter.vue';
+    import ListFilterInput from './ListFilterInput.vue';
 
     export default {
         name: 'FriendsList',
 
-        components: {Friend, FriendListFilter},
+        components: {Friend, ListFilterInput},
 
         data: () => ({
             filter: ''
