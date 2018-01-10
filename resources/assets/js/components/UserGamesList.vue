@@ -1,8 +1,9 @@
 <template>
-    <div v-if="games" class="w-full">
-        <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
+    <div v-if="games" class="w-1/5">
+        <div class="rounded overflow-hidden shadow-lg bg-white">
+            <ListFilterInput @update:filter="updateFilter"></ListFilterInput>
             <ul class="list-reset">
-                <Game v-for="game in games" 
+                <Game v-for="game in filteredGames" 
                     :key="game.appid" 
                     :game="game">
                 </Game>
@@ -15,13 +16,27 @@
     import { mapState } from 'vuex';
 
     import Game from './Game.vue';
+    import ListFilterInput from './ListFilterInput.vue';
 
     export default {
         name: 'UserGamesList',
 
-        components: { Game },
+        components: { Game, ListFilterInput },
+
+        data: () => ({
+            filter: ''
+        }),
+
+        methods: {
+            updateFilter: function(event) {
+                this.filter = event;
+            }
+        },
 
         computed: {
+            filteredGames () {
+                return this.$store.getters.filteredGames(this.filter);
+            },
             games () {
                 return this.$store.state.user.games;
             }
