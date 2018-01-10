@@ -28,9 +28,16 @@ const getters = {
             return a.personastate - b.personastate;
         });
     },
+
     filteredFriends: (state, getters) => (filter) => {
         return getters.sortedFriends.filter(function (friend) {
             return friend.personaname.toLowerCase().includes(filter.toLowerCase());
+        });
+    },
+
+    selectedFriends: (state) => {
+        return state.all.filter(function (friend) {
+            return friend.selected;
         });
     }
 }
@@ -41,6 +48,7 @@ const actions = {
             .then(response => {
                 let friends = response.data.map(function (friend) {
                     friend.selected = false;
+                    friend.games = [1,2,3];
                     return friend;
                 });
 
