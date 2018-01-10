@@ -30,6 +30,7 @@
         "@fortawesome/fontawesome-free-brands": "^5.0.2",
         "@fortawesome/fontawesome-pro-light": "^5.0.2",
         "@fortawesome/fontawesome-pro-regular": "^5.0.2",
-        "@fortawesome/fontawesome-pro-solid": "^5.0.2"
+        "@fortawesome/fontawesome-pro-solid": "^5.0.2",
+        "vue-table-component": "^1.8.1"
     }
 }

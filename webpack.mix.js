@@ -31,6 +31,7 @@ if (mix.inProduction()) {
         'vue',
         'vuex',
         'axios',
+        'vue-table-component',
         '@fortawesome/fontawesome',
         '@fortawesome/vue-fontawesome',
         "@fortawesome/fontawesome-free-brands",
