@@ -24,7 +24,9 @@ Route::get('logout', function () {
 
 Route::get('/home', function () {
     if (Auth::check()) {
-        return view('home', ['state' => [ 'user' => \Auth::user(), 'app' => ['name' => config('app.name')]]]);
+        $user = \Auth::user();
+        $user->games = [];
+        return view('home', ['state' => [ 'user' => $user, 'app' => ['name' => config('app.name')]]]);
     } else {
         return redirect('/login');
     }
