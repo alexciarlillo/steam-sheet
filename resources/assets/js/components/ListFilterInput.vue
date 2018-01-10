@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: 'FriendListFilter',
+        name: 'ListFilterInput',
 
         data: () => ({
             'filterString': ''
