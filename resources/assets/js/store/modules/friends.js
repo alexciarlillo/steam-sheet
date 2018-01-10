@@ -48,7 +48,7 @@ const actions = {
             .then(response => {
                 let friends = response.data.map(function (friend) {
                     friend.selected = false;
-                    friend.games = [1,2,3];
+                    friend.games = [];
                     return friend;
                 });
 

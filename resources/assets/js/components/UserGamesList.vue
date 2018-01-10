@@ -43,7 +43,7 @@
         },
         
         created() {
-            this.$store.dispatch('getUserGames');
+            this.$store.dispatch('getSteamGamesForUser', this.$store.state.user);
         }
     }
 </script>

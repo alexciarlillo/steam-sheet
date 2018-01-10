@@ -1,14 +1,20 @@
 <template>
     <div class="w-full">
-        <table-component :data="selectedFriends">
+        <!-- <table-component :data="">
             <div v-for="friend in selectedFriends">
                 <table-column show="communityvisibilitystate" :label="friend.personaname"></table-column>
             </div>
-        </table-component>
+        </table-component> -->
+        <ul>
+            <li v-for="game in combinedGames" :key="game.appid">
+                {{game.name}}
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
+    import { mapState, mapGetters } from 'vuex';
     import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
     import { TableComponent, TableColumn } from 'vue-table-component';
 
@@ -18,9 +24,11 @@
         props: [],
 
         computed: {
-            selectedFriends () {
-                return this.$store.getters.selectedFriends;
-            }
+            combinedGames () {
+                
+            },
+            ...mapState(['user', 'friends']),
+            ...mapGetters(['selectedFriends'])
         },
 
         components: {

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
     import { faPlusOctagon, faMinusOctagon } from '@fortawesome/fontawesome-pro-regular'
 
@@ -62,9 +63,11 @@
         },
 
         methods: {
+            ...mapActions(['getSteamGamesForUser']),
             toggleSelected: function() {
                 if(!this.friend.selected) {
                     this.friend.selected = true;
+                    this.getSteamGamesForUser(this.friend);
                 } else {
                     this.friend.selected = false;
                 }

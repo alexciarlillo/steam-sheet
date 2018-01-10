@@ -25,8 +25,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'steam_id'
     ];
 
-    protected $casts = ['steam_id' => 'string'];
+    public function getSteamidAttribute()
+    {
+        return (string) $this->attributes['steam_id'];
+    }
+
+    protected $maps = ['steamid' => 'steam_id'];
+    protected $appends = ['steamid'];
 }

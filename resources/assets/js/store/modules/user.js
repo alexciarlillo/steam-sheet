@@ -9,26 +9,9 @@ const getters = {
 }
 
 const actions = {
-    getUserGames({ commit, state }) {
-        axios.get('/api/games/?steamid=' + state.steam_id)
-            .then(response => {
-                let games = response.data.map(function (game) {
-                    game.selected = true;
-                    return game;
-                });
-
-                commit('setUserGames', { games: games });
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    },
 }
 
 const mutations = {
-    setUserGames(state, payload) {
-        state.games = payload.games;
-    }
 }
 
 export default {

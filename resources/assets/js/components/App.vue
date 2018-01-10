@@ -21,6 +21,10 @@
     export default {
         computed: mapState(['user', 'app']),
 
-        components: { FriendsList, Header, UserGamesList, MainContainer }
+        components: { FriendsList, Header, UserGamesList, MainContainer },
+
+        created() {
+            console.log(this.user);
+        }
     }
 </script>
