@@ -31,6 +31,7 @@ if (mix.inProduction()) {
         'vue',
         'vuex',
         'axios',
+        'moment',
         'vue-table-component',
         '@fortawesome/fontawesome',
         '@fortawesome/vue-fontawesome',
