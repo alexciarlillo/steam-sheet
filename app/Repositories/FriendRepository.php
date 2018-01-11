@@ -14,9 +14,18 @@ class FriendRepository {
     
     public function getForUser($user)
     {
-        
         $friendIds = $this->getFriendIds($user);
-        $friends = $this->getFriendsWithProfiles($friendIds);
+        $friends = collect([]);
+
+        while ($friendIds->count() > 99) {
+            $profileIdsToFetch = $friendIds->take(99);
+            $friendIds = $friendIds->slice(99);
+
+            $friends = $friends->merge($this->getFriendProfiles($profileIdsToFetch));
+        }
+
+        // one more call for the remainder
+        $friends = $friends->merge($this->getFriendProfiles($friendIds));
 
         return $friends->toJson();
     }
@@ -34,7 +43,8 @@ class FriendRepository {
         return collect($data->friendslist->friends)->pluck('steamid');
     }
 
-    protected function getFriendsWithProfiles($friendIds) {
+    protected function getFriendProfiles($friendIds) {
+
         $response = $this->client->get('GetPlayerSummaries/v0002/', ['query' =>
             [
                 'key' => config('services.steam.client_secret'),
