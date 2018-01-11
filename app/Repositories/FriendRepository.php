@@ -3,7 +3,8 @@
 use App\User;
 use GuzzleHttp\Client;
 
-class FriendRepository {
+class FriendRepository
+{
 
     public function __construct(Client $client)
     {
@@ -30,7 +31,8 @@ class FriendRepository {
         return $friends->toJson();
     }
 
-    protected function getFriendIds($user) {
+    protected function getFriendIds($user)
+    {
         $response = $this->client->get('GetFriendList/v0001/', ['query' =>
             [
                 'key' => config('services.steam.client_secret'),
@@ -43,7 +45,8 @@ class FriendRepository {
         return collect($data->friendslist->friends)->pluck('steamid');
     }
 
-    protected function getFriendProfiles($friendIds) {
+    protected function getFriendProfiles($friendIds)
+    {
 
         $response = $this->client->get('GetPlayerSummaries/v0002/', ['query' =>
             [
