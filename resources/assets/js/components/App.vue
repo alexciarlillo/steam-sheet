@@ -1,8 +1,10 @@
 <template>
     <div v-if="user">
-        <Header :app="app" :user="user"></Header>
+        <div class="header">
+            <Header :app="app" :user="user"></Header>
+        </div>
 
-        <div class="flex flex-wrap p-4">
+        <div class="flex flex-wrap main">
             <FriendsList></FriendsList>
             <MainContainer></MainContainer>
             <UserGamesList></UserGamesList>
@@ -24,3 +26,15 @@
         components: { FriendsList, Header, UserGamesList, MainContainer },
     }
 </script>
+
+
+<style scoped>
+    .header {
+        height: 12vh;
+    }
+
+    .main {
+        height: 88vh;
+        overflow: hidden;
+    }
+</style>

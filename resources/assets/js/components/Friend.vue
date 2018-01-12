@@ -1,5 +1,5 @@
 <template>
-    <li class="friend flex h-10 items-center p-2">
+    <li class="friend flex h-10 items-center py-2 pr-4 pl-2">
         <div class="info flex-grow">
             <span class="nickname" :class="personaStateColor">{{ friend.personaname }}</span>
             <span class="realname text-sm text-grey">{{ friend.realname }}</span>

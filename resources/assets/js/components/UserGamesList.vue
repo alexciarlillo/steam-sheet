@@ -1,8 +1,8 @@
 <template>
-    <div v-if="games" class="w-1/5">
-        <div class="rounded overflow-hidden shadow-lg bg-white">
-            <ListFilterInput @update:filter="updateFilter"></ListFilterInput>
-            <ul class="list-reset">
+    <div v-if="games" class="w-1/5 bg-white h-full">
+        <ListFilterInput @update:filter="updateFilter" class="pl-4 border-b-2 h-16"></ListFilterInput>
+        <div class="overflow-y-scroll h-full outter">
+            <ul class="list-reset inner">
                 <Game v-for="game in filteredGames" 
                     :key="game.appid" 
                     :game="game">
@@ -47,3 +47,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .inner {
+        padding-bottom: 4rem;
+    }
+</style>

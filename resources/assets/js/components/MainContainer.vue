@@ -1,8 +1,6 @@
 <template>
-    <div class="w-3/5 px-2">
-        <div class="rounded overflow-hidden shadow-lg bg-white p-2">
-            <GamesTable></GamesTable>
-        </div>
+    <div class="w-3/5 z-10 overflow-y-scroll h-full">
+        <GamesTable></GamesTable>
     </div>
 </template>
 

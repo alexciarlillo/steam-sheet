@@ -1,8 +1,8 @@
 <template>
-    <div v-if="friends" class="w-1/5">
-        <div class="rounded overflow-hidden shadow-lg bg-white">
-            <ListFilterInput @update:filter="updateFilter"></ListFilterInput>
-            <ul class="list-reset">
+    <div v-if="friends" class="friends-list w-1/5 bg-white h-full">
+        <ListFilterInput @update:filter="updateFilter" class="pr-4 border-b-2 h-16"></ListFilterInput>
+        <div class="overflow-y-scroll h-full outter">
+            <ul class="list-reset inner">
                 <Friend v-for="friend in filteredFriends" 
                     :key="friend.steamid" 
                     :friend="friend">
@@ -16,7 +16,7 @@
     import { mapState } from 'vuex';
 
     import Friend from './Friend.vue';
-    import ListFilterInput from './ListFilterInput.vue';
+    import ListFilterInput from './ListFilterInput.vue'
 
     export default {
         name: 'FriendsList',
@@ -47,3 +47,14 @@
         }
     }
 </script>
+
+<style scoped>
+    .outter {
+        transform: scaleX(-1);
+    }
+
+    .inner {
+        transform: scaleX(-1);
+        padding-bottom: 4rem;
+    }
+</style>

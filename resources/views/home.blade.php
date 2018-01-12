@@ -14,7 +14,7 @@
             window.__INITIAL_STATE__ = "{!! addslashes(json_encode($state)) !!}";
         </script>
     </head>
-    <body class="bg-black font-sans">
+    <body class="bg-white font-sans">
         
 
         <div id="app">
