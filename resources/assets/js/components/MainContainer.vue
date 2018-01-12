@@ -1,5 +1,5 @@
 <template>
-    <div class="w-3/5 z-10 overflow-y-scroll h-full">
+    <div class="w-3/5 z-10 overflow-y-scroll h-full shadow-lg-dark">
         <GamesTable></GamesTable>
     </div>
 </template>
